@@ -19,9 +19,9 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    currentMasterTime: state => {
+    currentMasterTime(state) {
       return state.time;
-    }
+    },
   },
   actions: {
   },

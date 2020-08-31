@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Clock />
+    <Clock :decal='4' />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Clock from './components/Clock.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Clock,
   },
+  // data() {
+  //   return {
+  //     decal: 4,
+  //   };
+  // },
   created() {
     this.createUTCTime();
     this.intervalId = setInterval(this.createUTCTime, 1000);
@@ -32,8 +38,6 @@ export default {
       this.$store.commit('initMasterClock', {
         UTCDate,
       });
-
-      console.log(`${this.$store.getters.currentMasterTime.hours} : ${this.$store.getters.currentMasterTime.minutes} : ${this.$store.getters.currentMasterTime.seconds}`);
     },
   },
 };
