@@ -17,6 +17,9 @@ export default new Vuex.Store({
       state.time.minutes = payload.UTCDate.getMinutes();
       state.time.seconds = payload.UTCDate.getSeconds();
     },
+    incrementSecond(state) {
+      state.time.seconds += 1;
+    },
   },
   getters: {
     currentMasterTime(state) {

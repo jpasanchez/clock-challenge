@@ -1,23 +1,20 @@
 <template>
   <div id="app">
-    <Clock />
-    <Clock :decal='4' />
+    <DigitalClock />
+    <AnalogClock :decal='4' />
   </div>
 </template>
 
 <script>
-import Clock from './components/Clock.vue';
+import DigitalClock from './components/DigitalClock.vue';
+import AnalogClock from './components/AnalogClock.vue';
 
 export default {
   name: 'App',
   components: {
-    Clock,
+    DigitalClock,
+    AnalogClock,
   },
-  // data() {
-  //   return {
-  //     decal: 4,
-  //   };
-  // },
   created() {
     this.createUTCTime();
     this.intervalId = setInterval(this.createUTCTime, 1000);
