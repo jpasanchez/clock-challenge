@@ -17,7 +17,7 @@ export default {
   },
   created() {
     this.createUTCTime();
-    this.intervalId = setInterval(this.createUTCTime, 1000);
+    setInterval(this.updateMasterClock, 1000);
   },
   methods: {
     createUTCTime() {
@@ -32,9 +32,14 @@ export default {
         localDate.getUTCMilliseconds(),
       );
 
+      const UTCDateMilliseconds = UTCDate.getTime();
+
       this.$store.commit('initMasterClock', {
-        UTCDate,
+        UTCDateMilliseconds,
       });
+    },
+    updateMasterClock() {
+      this.$store.commit('updateMasterClock');
     },
   },
 };

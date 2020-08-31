@@ -1,8 +1,8 @@
 <template>
   <div class="analog-clock">
-    <div>{{ this.$store.getters.currentMasterTime.hours }}</div>
-    <div>{{ this.$store.getters.currentMasterTime.minutes }}</div>
-    <div>{{ (this.$store.getters.currentMasterTime.seconds + decal) % 60 }}</div>
+    <div>{{ this.$store.getters.currentHours }}</div>
+    <div>{{ this.$store.getters.currentMinutes }}</div>
+    <div>{{ (this.$store.getters.currentSeconds + decal) % 60 }}</div>
   </div>
 </template>
 

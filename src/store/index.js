@@ -5,25 +5,38 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    time: {
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    },
+    time: 0,
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   },
   mutations: {
     initMasterClock(state, payload) {
-      state.time.hours = payload.UTCDate.getHours();
-      state.time.minutes = payload.UTCDate.getMinutes();
-      state.time.seconds = payload.UTCDate.getSeconds();
+      state.time = payload.UTCDateMilliseconds;
+    },
+    updateMasterClock(state) {
+      state.time += 1000;
     },
     incrementSecond(state) {
-      state.time.seconds += 1;
+      state.time += 1000;
+    },
+    incrementMinute(state) {
+      state.time += 60000;
     },
   },
   getters: {
     currentMasterTime(state) {
       return state.time;
+    },
+    currentHours(state) {
+      return new Date(state.time).getHours();
+    },
+    currentMinutes(state) {
+      return new Date(state.time).getMinutes();
+    },
+    currentSeconds(state) {
+      return new Date(state.time).getSeconds();
     },
   },
   actions: {

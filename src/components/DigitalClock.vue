@@ -1,8 +1,9 @@
 <template>
   <div class="digital-clock">
-    <div>{{ this.$store.getters.currentMasterTime.hours }}</div>
-    <div>{{ this.$store.getters.currentMasterTime.minutes }}</div>
-    <div>{{ (this.$store.getters.currentMasterTime.seconds + decal) % 60 }}</div>
+    <div>{{ this.$store.getters.currentHours }}</div>
+    <div>{{ this.$store.getters.currentMinutes }}</div>
+    <input type="button" value="+ 1 minute" @click="incrementMinutes">
+    <div>{{ this.$store.getters.currentSeconds }}</div>
     <input type="button" value="+ 1 Second" @click="incrementSeconds">
   </div>
 </template>
@@ -22,6 +23,9 @@ export default {
   methods: {
     incrementSeconds() {
       this.$store.commit('incrementSecond');
+    },
+    incrementMinutes() {
+      this.$store.commit('incrementMinute');
     },
   },
 };
