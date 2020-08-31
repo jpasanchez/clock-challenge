@@ -12,6 +12,30 @@ export default {
   components: {
     HelloWorld,
   },
+  created() {
+    this.createUTCTime();
+    this.intervalId = setInterval(this.createUTCTime, 1000);
+  },
+  methods: {
+    createUTCTime() {
+      const localDate = new Date();
+      const UTCDate = new Date(
+        localDate.getUTCFullYear(),
+        localDate.getUTCMonth(),
+        localDate.getUTCDate(),
+        localDate.getUTCHours(),
+        localDate.getUTCMinutes(),
+        localDate.getUTCSeconds(),
+        localDate.getUTCMilliseconds(),
+      );
+
+      this.$store.commit('initMasterClock', {
+        UTCDate,
+      });
+
+      console.log(`${this.$store.getters.currentMasterTime.hours} : ${this.$store.getters.currentMasterTime.minutes} : ${this.$store.getters.currentMasterTime.seconds}`);
+    },
+  },
 };
 </script>
 
