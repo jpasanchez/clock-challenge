@@ -3,19 +3,18 @@
        v-bind:class="{ 'digital-clock--ticktick' : this.$store.getters.ticktick }">
     <div class="digital-clock__container">
       <div class="digital-clock__digit-item">
-        <div class="digital-clock__digit">{{ this.$store.getters.currentHours }}</div>
+        <div class="digital-clock__digit">
+          {{ this.$store.getters.currentHours | addLeadingZero }}
+        </div>
       </div>
       <div class="digital-clock__digit-item">
-        <div class="digital-clock__digit">{{ this.$store.getters.currentMinutes }}</div>
+        <div class="digital-clock__digit">
+          {{ this.$store.getters.currentMinutes | addLeadingZero }}
+        </div>
       </div>
     </div>
   </div>
 </template>
-
-<!--      <input type="button" value="+ 1 minute" @click="incrementMinutes">-->
-<!--      <div>{{ this.$store.getters.currentSeconds }}</div>-->
-<!--      <input type="button" value="+ 1 Second" @click="incrementSeconds">-->
-
 <script>
 export default {
   name: 'DigitalClock',
@@ -25,8 +24,10 @@ export default {
       default: 0,
     },
   },
-  mounted() {
-    console.log(`${this.$store.getters.currentMasterTime.hours} : ${this.$store.getters.currentMasterTime.minutes} : ${this.$store.getters.currentMasterTime.seconds}`);
+  filters: {
+    addLeadingZero(number) {
+      return number < 10 ? `0${number}` : number.toString();
+    },
   },
   methods: {
     incrementSeconds() {

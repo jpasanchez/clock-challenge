@@ -2,21 +2,15 @@
   <div class="analog-clock">
     <div class="analog-clock__container">
       <div class="analog-clock__hours"
-           :style="{
-             transform: `rotate(${this.$store.getters.currentHours * 30}deg) translateY(-50%)`}">
+           :style="{transform: `rotate(${hoursDegrees}deg)translateY(-50%)`}">
       </div>
       <div class="analog-clock__minutes"
-           :style="{
-             transform: `rotate(${this.$store.getters.currentMinutes * 6}deg) translateY(-50%)`}">
+           :style="{transform: `rotate(${minutesDegrees}deg) translateY(-50%)`}">
       </div>
       <div class="analog-clock__seconds"
-           :style="{
-             transform: `rotate(${this.$store.getters.currentSeconds * 6}deg) translateY(-50%)`}">
+           :style="{transform: `rotate(${secondsDegrees}deg) translateY(-50%)`}">
       </div>
     </div>
-<!--    <div>{{ this.$store.getters.currentHours }}</div>-->
-<!--    <div>{{ this.$store.getters.currentMinutes }}</div>-->
-<!--    <div>{{ (this.$store.getters.currentSeconds + decal) % 60 }}</div>-->
   </div>
 </template>
 
@@ -24,9 +18,20 @@
 export default {
   name: 'AnalogClock',
   props: {
-    decal: {
+    hoursAdjustment: {
       type: Number,
-      default: 0,
+      default: -4,
+    },
+  },
+  computed: {
+    hoursDegrees() {
+      return ((this.$store.getters.currentHours + this.hoursAdjustment) % 24) * 30;
+    },
+    minutesDegrees() {
+      return this.$store.getters.currentMinutes * 6;
+    },
+    secondsDegrees() {
+      return this.$store.getters.currentSeconds * 6;
     },
   },
 };
