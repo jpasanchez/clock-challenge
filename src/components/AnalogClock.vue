@@ -1,14 +1,17 @@
 <template>
-  <div class="analog-clock">
-    <div class="analog-clock__container">
-      <div class="analog-clock__hours"
-           :style="{transform: `rotate(${hoursDegrees}deg)translateY(-50%)`}">
-      </div>
-      <div class="analog-clock__minutes"
-           :style="{transform: `rotate(${minutesDegrees}deg) translateY(-50%)`}">
-      </div>
-      <div class="analog-clock__seconds"
-           :style="{transform: `rotate(${secondsDegrees}deg) translateY(-50%)`}">
+  <div class="clock-section">
+    <div class="clock-section__title">{{ title }}</div>
+    <div class="analog-clock">
+      <div class="analog-clock__container">
+        <div class="analog-clock__hours"
+             :style="{transform: `rotate(${hoursDegrees}deg)translateY(-50%)`}">
+        </div>
+        <div class="analog-clock__minutes"
+             :style="{transform: `rotate(${minutesDegrees}deg) translateY(-50%)`}">
+        </div>
+        <div class="analog-clock__seconds"
+             :style="{transform: `rotate(${secondsDegrees}deg) translateY(-50%)`}">
+        </div>
       </div>
     </div>
   </div>
@@ -18,6 +21,10 @@
 export default {
   name: 'AnalogClock',
   props: {
+    title: {
+      type: String,
+      default: '',
+    },
     hoursAdjustment: {
       type: Number,
       default: -4,

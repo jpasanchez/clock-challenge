@@ -1,15 +1,18 @@
 <template>
-  <div class="digital-clock"
-       v-bind:class="{ 'digital-clock--ticktick' : this.$store.getters.ticktick }">
-    <div class="digital-clock__container">
-      <div class="digital-clock__digit-item">
-        <div class="digital-clock__digit">
-          {{ this.$store.getters.currentHours | addLeadingZero }}
+  <div class="clock-section">
+    <div class="clock-section__title">{{ title }}</div>
+    <div class="digital-clock" v-bind:class="{ 'digital-clock--ticktick' :
+    this.$store.getters.ticktick }">
+      <div class="digital-clock__container">
+        <div class="digital-clock__digit-item">
+          <div class="digital-clock__digit">
+            {{ this.$store.getters.currentHours | addLeadingZero }}
+          </div>
         </div>
-      </div>
-      <div class="digital-clock__digit-item">
-        <div class="digital-clock__digit">
-          {{ this.$store.getters.currentMinutes | addLeadingZero }}
+        <div class="digital-clock__digit-item">
+          <div class="digital-clock__digit">
+            {{ this.$store.getters.currentMinutes | addLeadingZero }}
+          </div>
         </div>
       </div>
     </div>
@@ -19,9 +22,9 @@
 export default {
   name: 'DigitalClock',
   props: {
-    decal: {
-      type: Number,
-      default: 0,
+    title: {
+      type: String,
+      default: '',
     },
   },
   filters: {

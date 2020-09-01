@@ -1,12 +1,8 @@
 <template>
   <div id="app">
     <section class="clocks">
-      <div class="clocks__side clocks__side--digital">
-        <DigitalClock />
-      </div>
-      <div class="clocks__side clocks__side--analog">
-        <AnalogClock :decal='4' />
-      </div>
+      <DigitalClock title="UTC" />
+      <AnalogClock title="Montreal" :hours-adjustment="-4" />
       <div class="clocks__controls">
         <button @click="incrementHours">+ 1 hour</button>
         <button @click="incrementMinutes">+ 1 minute</button>
@@ -128,35 +124,23 @@ export default {
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .clock-section {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__title {
+      font-size: 6vmax;
+      color: #ffffff;
+    }
+  }
+
   .clocks {
     display: flex;
     background: #0059b3;
-
-    &__side {
-      flex: 1;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &::before {
-        padding: 20px;
-        font-size: 3vmax;
-        color: #ffffff;
-      }
-
-      &--digital {
-        &::before {
-          content: 'UTC TIME NOW';
-        }
-      }
-
-      &--analog {
-        &::before {
-          content: 'MONTREAL TIME NOW';
-        }
-      }
-    }
 
     button {
       border: 0;
@@ -174,14 +158,18 @@ export default {
     }
   }
 
-  @media (max-width: 991px) {
-    .clocks {
+  @media (max-width: 767px) {
+    .clock-section {
+      padding: 40px 0;
       flex-direction: column;
 
-      &__side {
-        padding: 40px 0;
-        flex-direction: column;
+      &__title {
+        margin-bottom: 15%;
       }
+    }
+
+    .clocks {
+      flex-direction: column;
 
       &__controls {
         position: static;
@@ -189,7 +177,14 @@ export default {
     }
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
+    .clock-section {
+      &__title {
+        position: absolute;
+        top: 15%;
+      }
+    }
+
     .clocks {
       &__controls {
         position: absolute;
@@ -199,12 +194,13 @@ export default {
         top: 50%;
         transform: translate(-50%, -50%);
       }
+    }
+  }
 
-      &__side {
-        &::before {
-          position: absolute;
-          top: 12%;
-        }
+  @media (min-width: 1200px) {
+    .clock-section {
+      &__title {
+        font-size: 4vmax;
       }
     }
   }
