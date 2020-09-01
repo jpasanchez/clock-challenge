@@ -121,11 +121,15 @@ export default {
       flex: 1;
       height: 100vh;
 
-      &--digital {
-        background: #ff5b93;
+      &--digital,
+      &--analog {
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+
+      &--digital {
+        background: #ff5b93;
       }
 
       &--analog {
