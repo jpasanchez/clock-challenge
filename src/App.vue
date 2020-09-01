@@ -8,9 +8,9 @@
         <AnalogClock :decal='4' />
       </div>
       <div class="clocks__controls">
-        <input type="button" value="+ 1 hour" @click="incrementHours">
-        <input type="button" value="+ 1 minute" @click="incrementMinutes">
-        <input type="button" value="+ 1 Second" @click="incrementSeconds">
+        <button @click="incrementHours">+ 1 hour</button>
+        <button @click="incrementMinutes">+ 1 minute</button>
+        <button @click="incrementSeconds">+ 1 Second</button>
       </div>
     </section>
   </div>
@@ -148,6 +148,49 @@ export default {
 
       &--analog {
         background: #43acff;
+      }
+    }
+
+    button {
+      border: 0;
+      border-radius: 0.25rem;
+      background: #000000;
+      color: #ffffff;
+      font-family: system-ui, sans-serif;
+      line-height: 1.2;
+      white-space: nowrap;
+      text-decoration: none;
+      font-size: 1.5vmax;
+      padding: 1rem 1.5rem;
+      margin: 0.25rem;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .clocks {
+      flex-direction: column;
+
+      &__side {
+        padding: 40px 0;
+      }
+
+      &__controls {
+        position: static;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    .clocks {
+      &__controls {
+        position: absolute;
+        display: flex;
+        left: 50%;
+        flex-direction: column;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
     }
   }
