@@ -29,14 +29,6 @@ export default {
       return number < 10 ? `0${number}` : number.toString();
     },
   },
-  methods: {
-    incrementSeconds() {
-      this.$store.commit('incrementSecond');
-    },
-    incrementMinutes() {
-      this.$store.commit('incrementMinute');
-    },
-  },
 };
 </script>
 

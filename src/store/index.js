@@ -25,6 +25,9 @@ export default new Vuex.Store({
     incrementMinute(state) {
       state.time += 60000;
     },
+    incrementHour(state) {
+      state.time += 3600000;
+    },
     ticktick(state) {
       state.ticktick = !state.ticktick;
     },

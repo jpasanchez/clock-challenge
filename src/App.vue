@@ -7,6 +7,11 @@
       <div class="clocks__side clocks__side--analog">
         <AnalogClock :decal='4' />
       </div>
+      <div class="clocks__controls">
+        <input type="button" value="+ 1 hour" @click="incrementHours">
+        <input type="button" value="+ 1 minute" @click="incrementMinutes">
+        <input type="button" value="+ 1 Second" @click="incrementSeconds">
+      </div>
     </section>
   </div>
 </template>
@@ -50,6 +55,15 @@ export default {
     },
     ticktick() {
       this.$store.commit('ticktick');
+    },
+    incrementSeconds() {
+      this.$store.commit('incrementSecond');
+    },
+    incrementMinutes() {
+      this.$store.commit('incrementMinute');
+    },
+    incrementHours() {
+      this.$store.commit('incrementHour');
     },
   },
 };
