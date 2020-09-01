@@ -10,6 +10,7 @@ export default new Vuex.Store({
     hours: 0,
     minutes: 0,
     seconds: 0,
+    ticktick: false,
   },
   mutations: {
     initMasterClock(state, payload) {
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     incrementMinute(state) {
       state.time += 60000;
     },
+    ticktick(state) {
+      state.ticktick = !state.ticktick;
+    },
   },
   getters: {
     currentMasterTime(state) {
@@ -37,6 +41,9 @@ export default new Vuex.Store({
     },
     currentSeconds(state) {
       return new Date(state.time).getSeconds();
+    },
+    ticktick(state) {
+      return state.ticktick;
     },
   },
   actions: {
