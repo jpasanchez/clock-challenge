@@ -40,8 +40,8 @@ export default {
 <style scoped lang="scss">
   .analog-clock {
     display: inline-flex;
-    padding-top: 50%;
-    width: 50%;
+    padding-top: 40%;
+    width: 40%;
     border-radius: 50%;
     background: black;
     position: relative;

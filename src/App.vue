@@ -134,20 +134,30 @@ export default {
     &__side {
       flex: 1;
       height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      &--digital,
-      &--analog {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      &::before {
+        padding: 20px;
+        font-size: 3vmax;
+        color: #ffffff;
       }
 
       &--digital {
         background: #ff5b93;
+
+        &::before {
+          content: 'UTC TIME NOW';
+        }
       }
 
       &--analog {
         background: #43acff;
+
+        &::before {
+          content: 'MONTREAL TIME NOW';
+        }
       }
     }
 
@@ -174,6 +184,7 @@ export default {
 
       &__side {
         padding: 40px 0;
+        flex-direction: column;
       }
 
       &__controls {
@@ -191,6 +202,13 @@ export default {
         flex-direction: column;
         top: 50%;
         transform: translate(-50%, -50%);
+      }
+
+      &__side {
+        &::before {
+          position: absolute;
+          top: 12%;
+        }
       }
     }
   }
