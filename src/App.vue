@@ -130,6 +130,7 @@ export default {
 
   .clocks {
     display: flex;
+    background: #0059b3;
 
     &__side {
       flex: 1;
@@ -145,16 +146,12 @@ export default {
       }
 
       &--digital {
-        background: #ff5b93;
-
         &::before {
           content: 'UTC TIME NOW';
         }
       }
 
       &--analog {
-        background: #43acff;
-
         &::before {
           content: 'MONTREAL TIME NOW';
         }
@@ -164,9 +161,9 @@ export default {
     button {
       border: 0;
       border-radius: 0.25rem;
-      background: #000000;
-      color: #ffffff;
-      font-family: system-ui, sans-serif;
+      background: #ffdf01;
+      color: #000000;
+      font-weight: 700;
       line-height: 1.2;
       white-space: nowrap;
       text-decoration: none;
@@ -174,7 +171,6 @@ export default {
       padding: 1rem 1.5rem;
       margin: 0.25rem;
       cursor: pointer;
-      text-transform: uppercase;
     }
   }
 
